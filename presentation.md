@@ -146,25 +146,26 @@ This gives us the following approximation :
 </small>
 
 <div class="left half">
-```
+<code class="elm">
 type Shape = ShapeConstructor Int Int
 
 let
     square = Shape 2 2
 in
     ...
-```
+</code>
 </div>
 
 <div class="right">
-=
+≈
 </div>
 
 <div class="right half">
+<code class="python">
 class Shape:
     def __init__(self, x, y):
         self.x, self.y = x, y
 
-square = Shape(2, 2)```
-```
+square = Shape(2, 2)
+</code>
 </div>
