@@ -21,7 +21,9 @@ revealOptions:
 
 ### Elm Syntax
 
+<small>
 Syntax is very minimalistic
+</small>
 ```
 -- Comment
 {-
@@ -47,9 +49,11 @@ content that has "quotation marks".
 
 ---
 
+<small>
 If statements need a `then` and accept `else` and `else if`.
 
 Case statements combine `if` structures and variable destructuring.
+</small>
 
 ```
 if key == 40 then
@@ -66,7 +70,7 @@ case n of
 
 ---
 
-Records are a the equivalent of structs or dataclasses
+<small>Records are a the equivalent of structs or dataclasses</small>
 
 ```
 -- create records
@@ -86,16 +90,45 @@ List.map .x [ origin, point ] == [ 0, 3 ]
 
 ---
 
+<small>
 Functions are the core elements of Elm.
 
+Functions have (optional) type annotations.
+
 They allow destructuring directly in the arguments.
+</small>
 ```
+square : Float -> Float
 square n =
   n^2
 
+hypotenuse : Float -> Float -> Float
 hypotenuse a b =
   sqrt (square a + square b)
 
+distance : (Float, Float) -> (Float, Float) -> Float
 distance (a,b) (x,y) =
   hypotenuse (a - x) (b - y)
+```
+
+---
+
+<small>A few more</small>
+
+```
+-- The |> (pipe) operator is used to chain functions
+viewNames2 names =
+  names
+    |> List.sort
+    |> String.join ", "
+
+-- The let keyword allows to declare variables
+let
+  twentyFour =
+    3 * 8
+in
+twentyFour + 15
+
+-- Elm has a rich module system
+import List exposing (..)
 ```
