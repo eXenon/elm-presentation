@@ -145,7 +145,7 @@ In Elm, a type has constructors (like a class) but no methods and no getters or 
 This gives us the following approximation :
 </small>
 
-<div class="left half">
+<p class="left half">
 <code class="elm">
 type Shape = ShapeConstructor Int Int
 
@@ -154,13 +154,13 @@ let
 in
     ...
 </code>
-</div>
+</p>
 
-<div class="right">
+<p class="right">
 ≈
-</div>
+</p>
 
-<div class="right half">
+<p class="right half">
 <code class="python">
 class Shape:
     def __init__(self, x, y):
@@ -168,4 +168,4 @@ class Shape:
 
 square = Shape(2, 2)
 </code>
-</div>
+</p>
