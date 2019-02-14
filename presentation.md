@@ -132,3 +132,39 @@ A few niceties of Elm
 - Data is immutable
 - No implicit casts. Never.
 - No objects, no classes (and no typeclasses).
+
+---
+
+### Functional, strong, static, fabulous, typing
+
+---
+
+<small>
+Elm has not the same concept of objects as Python.
+In Elm, a type has constructors (like a class) but no methods and no getters or setters.
+This gives us the following approximation :
+</small>
+
+<div class="left half">
+```
+type Shape = ShapeConstructor Int Int
+
+let
+    square = Shape 2 2
+in
+    ...
+```
+</div>
+
+<div class="right">
+=
+</div>
+
+<div class="right half">
+class Shape:
+    def __init__(self, x, y):
+        self.x, self.y = x, y
+
+square = Shape(2, 2)```
+```
+</div>
