@@ -39,19 +39,12 @@ False : Bool
 
 'a'   : Char
 "abc" : String
-
--- multi-line String
-"""
-This is useful for holding JSON or other
-content that has "quotation marks".
-"""
 ```
 
 ---
 
 <small>
-If statements need a `then` and accept `else` and `else if`.
-
+If statements need a `then` and accept `else` and `else if`.<br>
 Case statements combine `if` structures and variable destructuring.
 </small>
 
@@ -91,10 +84,8 @@ List.map .x [ origin, point ] == [ 0, 3 ]
 ---
 
 <small>
-Functions are the core elements of Elm.
-
-Functions have (optional) type annotations.
-
+Functions are the core elements of Elm.<br>
+Functions have (optional) type annotations.<br>
 They allow destructuring directly in the arguments.
 </small>
 ```
@@ -132,3 +123,12 @@ twentyFour + 15
 -- Elm has a rich module system
 import List exposing (..)
 ```
+
+---
+
+A few niceties of Elm
+
+- Every function is a single statement
+- Data is immutable
+- No implicit casts. Never.
+- No objects, no classes (and no typeclasses).
