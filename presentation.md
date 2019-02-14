@@ -5,10 +5,10 @@
 
 ### What we will do today
 
-I. Elm Syntax
-II. A few concepts of FP
-III. A few concepts of strong typing
-IV. The Elm Architecture
-V. Example : simple todo-list
+- Elm Syntax
+- A few concepts of FP
+- A few concepts of strong typing
+- The Elm Architecture
+- Example : simple todo-list
 
 ---
