@@ -16,16 +16,17 @@
     <body>
 
         <div class="reveal">
-            <div class="slides"><section  data-markdown><script type="text/template"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+            <div class="slides"><section  data-markdown><script type="text/template">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <h1>Elm Workshop</h1>
 </script></section><section  data-markdown><script type="text/template">
 ### What we will do today
 
-- Elm Syntax
-- A few concepts of FP
-- A few concepts of strong typing
-- The Elm Architecture
-- Example : simple todo-list
+1. Elm Syntax
+2. A few concepts of FP
+3. A few concepts of strong typing
+4. The Elm Architecture
+5. Example : simple todo-list
 </script></section><section  data-markdown><script type="text/template"></script></section></div>
         </div>
 
@@ -70,7 +71,7 @@
             // options from URL query string
             var queryOptions = Reveal.getQueryHash() || {};
 
-            var options = {};
+            var options = "transition:'none' slideNumbered:true";
             options = extend(defaultOptions, options, queryOptions);
         </script>
 
