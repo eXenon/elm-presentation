@@ -120,19 +120,15 @@ let
     3 * 8
 in
 twentyFour + 15
-
--- Elm has a rich module system
-import List exposing (..)
 ```
 </script></section><section  data-markdown><script type="text/template">
-A few niceties of Elm
+A few things to get used to in Elm :
 
-- Every function is a single statement
-- Data is immutable
 - No implicit casts. Never.
-- No objects, no classes (and no typeclasses).
+- Data is immutable
+- *Every function is a single statement*
 </script></section><section  data-markdown><script type="text/template">
-### Functional, strong, static, fabulous, typing
+### Fabulous, functional, strong, static typing
 </script></section><section  data-markdown><script type="text/template">
 <small>
 Elm has not the same concept of objects as Python.
@@ -141,14 +137,12 @@ This gives us the following approximation :
 </small>
 
 <p class="left half">
-<code class="elm">
 type Shape = ShapeConstructor Int Int
 
 let
     square = Shape 2 2
 in
     ...
-</code>
 </p>
 
 <p class="right">
