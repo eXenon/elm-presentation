@@ -142,24 +142,26 @@ This gives us the following approximation :
 </small>
 
 <p class="left third">
+<small><pre><code class="hljs elm">
 type Shape = ShapeConstructor Int Int
 
 let
     square = Shape 2 2
 in
     ...
+</code></pre></small>
 </p>
 
-<p class="right third">
+<p class="left third">
 ≈
 </p>
 
 <p class="right third">
-<code class="python">
+<small><pre><code class="hljs python">
 class Shape:
     def __init__(self, x, y):
         self.x, self.y = x, y
 
 square = Shape(2, 2)
-</code>
+</code></pre></small>
 </p>
