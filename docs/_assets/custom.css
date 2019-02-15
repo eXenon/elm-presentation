@@ -27,6 +27,10 @@ i.fas {
     width: 50%;
 }
 
+.third {
+    width: 33%;
+}
+
 .left-col {
     width: 400px;
     padding-right: 50px !important;
