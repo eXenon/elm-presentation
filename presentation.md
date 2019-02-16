@@ -123,15 +123,8 @@ twentyFour + 15
 
 ---
 
-A few things to get used to in Elm :
-
-- No implicit casts. Never.
-- Data is immutable
-- *Every function is a single statement*
-
----
-
 ### Fabulous, functional, strong, static typing
+
 
 ---
 
@@ -146,7 +139,7 @@ This gives us the following approximation :
 type Shape = ShapeConstructor Int Int
 
 let
-    square = Shape 2 2
+    square = ShapeConstructor 2 2
 in
     ...
 </code></pre></small>
@@ -165,3 +158,23 @@ class Shape:
 square = Shape(2, 2)
 </code></pre></small>
 </p>
+
+---
+
+But the compiler is really smart, so we can do things like this
+```
+type Shape = Shape Int Int
+
+square = Shape 2 2
+```
+
+*`Shape` is a constructor AND and type*
+
+---
+
+A few things to get used to in Elm :
+
+- No implicit casts. Never.
+- Data is immutable
+- *Every function is a single statement*
+

@@ -122,13 +122,8 @@ in
 twentyFour + 15
 ```
 </script></section><section  data-markdown><script type="text/template">
-A few things to get used to in Elm :
-
-- No implicit casts. Never.
-- Data is immutable
-- *Every function is a single statement*
-</script></section><section  data-markdown><script type="text/template">
 ### Fabulous, functional, strong, static typing
+
 </script></section><section  data-markdown><script type="text/template">
 <small>
 Elm has not the same concept of objects as Python.
@@ -141,7 +136,7 @@ This gives us the following approximation :
 type Shape = ShapeConstructor Int Int
 
 let
-    square = Shape 2 2
+    square = ShapeConstructor 2 2
 in
     ...
 </code></pre></small>
@@ -160,6 +155,22 @@ class Shape:
 square = Shape(2, 2)
 </code></pre></small>
 </p>
+</script></section><section  data-markdown><script type="text/template">
+But the compiler is really smart, so we can do things like this
+```
+type Shape = Shape Int Int
+
+square = Shape 2 2
+```
+
+*`Shape` is a constructor AND and type*
+</script></section><section  data-markdown><script type="text/template">
+A few things to get used to in Elm :
+
+- No implicit casts. Never.
+- Data is immutable
+- *Every function is a single statement*
+
 </script></section></div>
         </div>
 
