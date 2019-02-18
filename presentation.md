@@ -178,3 +178,24 @@ A few things to get used to in Elm :
 - Data is immutable
 - *Every function is a single statement*
 
+---
+
+Custom data types are everything in Elm :
+```
+type Shape = Square Int | Rectangle Int | Circle Float
+
+unit = Square 1
+center = Circle 1.2
+```
+
+---
+
+These types are really easy to match on
+```
+area : Shape -> Float
+area shape =
+    case shape of
+        Square side -> Int.toFloat(side^2)
+        Rectangle a b -> Int.toFloat(a*b)
+        Circle radius -> redius * 3.14
+```
