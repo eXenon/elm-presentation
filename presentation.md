@@ -197,5 +197,27 @@ area shape =
     case shape of
         Square side -> Int.toFloat(side^2)
         Rectangle a b -> Int.toFloat(a*b)
-        Circle radius -> redius * 3.14
+        Circle radius -> radius * 3.14
+```
+
+<small><i>Types are a huge part of any Elm part.<br>
+They should be at the root of the app design and mirror business logic.</i></small>
+
+---
+
+### The Elm Architecture
+
+---
+
+Elm is built around a `Update > View` cycle, with a single source of truth : the model.
+```
++------+  model  +--------+
+| init | ------> |  view  | <+
++------+         +--------+  |
+                   |         |
+                   | message | model
+                   v         |
+                 +--------+  |
+                 | update | -+
+                 +--------+
 ```
