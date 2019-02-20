@@ -194,9 +194,25 @@ They should be at the root of the app design and mirror business logic.</i></sma
 </script></section><section  data-markdown><script type="text/template">
 ### The Elm Architecture
 </script></section><section  data-markdown><script type="text/template">
-Elm is built around a `Update > View` cycle, with a single source of truth : the model.
-<img src="assets/elm-architecture.svg">
-</script></section><section  data-markdown><script type="text/template"></script></section></div>
+<small>Elm is built around a `Update > View` cycle, with a single source of truth : the model.</small>
+<img src="assets/elm-architecture.svg" style="height:40vh;">
+</script></section><section  data-markdown><script type="text/template">
+Minimal Elm app :
+```
+type Model = Int
+type Msg = Increase | Decrease
+
+init = 0
+update message model =
+    case message of
+        Increase -> model + 1
+        Decrease -> model - 1
+view model =
+    text (String.fromInt model)
+```
+
+
+</script></section></div>
         </div>
 
         <script src="./lib/js/head.min.js"></script>

@@ -209,7 +209,23 @@ They should be at the root of the app design and mirror business logic.</i></sma
 
 ---
 
-Elm is built around a `Update > View` cycle, with a single source of truth : the model.
-<img src="assets/elm-architecture.svg">
+<small>Elm is built around a `Update > View` cycle, with a single source of truth : the model.</small>
+<img src="assets/elm-architecture.svg" style="height:40vh;">
 
 ---
+
+Minimal Elm app :
+```
+type Model = Int
+type Msg = Increase | Decrease
+
+init = 0
+update message model =
+    case message of
+        Increase -> model + 1
+        Decrease -> model - 1
+view model =
+    text (String.fromInt model)
+```
+
+
