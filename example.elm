@@ -37,18 +37,20 @@ type Todo
 
 
 type alias Model =
-    { done : List Todo, open : List Todo }
+    { done : List Todo, open : List Todo, new : String }
 
 
 type Msg
     = Closed Int
     | Opened Int
     | Add String
+    | NewTodo String
+    | Commit
 
 
 init : Model
 init =
-    { done = [ Todo "Make todo App" ], open = [ Todo "Learn Elm" ] }
+    { done = [ Todo "Make todo App" ], open = [ Todo "Learn Elm" ], new = "" }
 
 
 
@@ -63,27 +65,33 @@ update msg model =
                 ( closed_todo, open ) =
                     popAtIndex model.open idx []
             in
-            case closed_todo of
-                Nothing ->
-                    model
+                case closed_todo of
+                    Nothing ->
+                        model
 
-                Just t ->
-                    { model | done = t :: model.done, open = open }
+                    Just t ->
+                        { model | done = t :: model.done, open = open }
 
         Opened idx ->
             let
                 ( opened_todo, done ) =
                     popAtIndex model.done idx []
             in
-            case opened_todo of
-                Nothing ->
-                    model
+                case opened_todo of
+                    Nothing ->
+                        model
 
-                Just t ->
-                    { model | done = done, open = t :: model.open }
+                    Just t ->
+                        { model | done = done, open = t :: model.open }
 
         Add description ->
             { model | open = Todo description :: model.open }
+
+        NewTodo desc ->
+            { model | new = desc }
+
+        Commit ->
+            { model | open = Todo model.new :: model.open, new = "" }
 
 
 
@@ -99,21 +107,24 @@ checkbox desc checked_ msg =
                 , style "text-decoration" "line-through"
                 , style "color" "#aaa"
                 ]
-
             else
                 [ style "padding" "20px" ]
     in
-    label
-        style_
-        [ input [ type_ "checkbox", checked checked_, onClick msg ] []
-        , text desc
-        ]
+        label
+            style_
+            [ input [ type_ "checkbox", checked checked_, onClick msg ] []
+            , text desc
+            ]
 
 
 view : Model -> Html Msg
 view model =
     div []
-        [ text "TODOs"
+        [ div []
+            [ input [ onInput NewTodo, value model.new ] []
+            , button [ onClick Commit ] [ text "Add new Todo" ]
+            ]
+        , text "TODOs"
         , div []
             [ ul []
                 (List.indexedMap

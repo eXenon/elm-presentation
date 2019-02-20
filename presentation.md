@@ -123,7 +123,7 @@ twentyFour + 15
 
 ---
 
-### Fabulous, functional, strong, static typing
+### Fabulous, functional, strong, assets typing
 
 
 ---
@@ -286,6 +286,6 @@ view = ?
 
 ---
 
-Example at [https://exenon.github.io/elm-presentation/static/example.html](https://exenon.github.io/elm-presentation/static/example.html)
+Example at [https://exenon.github.io/elm-presentation/assets/example.html](https://exenon.github.io/elm-presentation/assets/example.html)
 
-Code at [https://github.com/eXenon/elm-presentation](https://github.com/eXenon/elm-presentation)
+Code at [https://github.com/eXenon/elm-presentation](https://github.com/eXenon/elm-presentation/blob/master/example.elm)
