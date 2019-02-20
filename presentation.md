@@ -225,7 +225,8 @@ update message model =
         Increase -> model + 1
         Decrease -> model - 1
 view model =
-    text (String.fromInt model)
+    div [] [ button [ onClick Inrease ] [ text "+" ]
+           , text (String.fromInt model)
+           , button [ onClick Decrease ] [ text "-" ] ]
 ```
-
 
