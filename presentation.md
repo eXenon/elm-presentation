@@ -210,6 +210,6 @@ They should be at the root of the app design and mirror business logic.</i></sma
 ---
 
 Elm is built around a `Update > View` cycle, with a single source of truth : the model.
-<img src="static/elm-architecture.svg">
+<img src="assets/elm-architecture.svg">
 
 ---
