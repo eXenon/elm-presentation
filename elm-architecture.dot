@@ -1,0 +1,13 @@
+digraph elmarchitecture {
+    Runtime [shape=box,width=2];
+    init [root=true];
+    init -> view [label=Model,fontsize=10];
+    view -> Runtime [label=HTML,fontsize=10];
+    Runtime -> update [label="Message+Model",fontsize=10];
+    update -> Runtime [label="new Model",fontsize=10];
+    Runtime -> view [label="Model",fontsize=10];
+
+    { rank=same; init view }
+    { rank=same; update }
+    { rank=same; Runtime }
+}
