@@ -238,9 +238,9 @@ view model =
 --- 
 
 1. Make yourself a dedicated folder
-2. Go to github.com/eXenon/elm-presentation/
+2. Go to `github.com/eXenon/elm-presentation/`
 3. Run the init command in the README
-4. Open src/main.elm in your favorite editor
+4. Open `src/main.elm` in your favorite editor
 
 ---
 
@@ -286,4 +286,6 @@ view = ?
 
 ---
 
-And now iterate !
+Example at [https://exenon.github.io/elm-presentation/static/example.html](https://exenon.github.io/elm-presentation/static/example.html)
+
+Code at [https://github.com/eXenon/elm-presentation](https://github.com/eXenon/elm-presentation)
