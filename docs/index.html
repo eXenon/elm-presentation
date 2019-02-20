@@ -197,7 +197,7 @@ They should be at the root of the app design and mirror business logic.</i></sma
 <small>Elm is built around a `Update > View` cycle, with a single source of truth : the model.</small>
 <img src="assets/elm-architecture.svg" style="height:40vh;">
 </script></section><section  data-markdown><script type="text/template">
-Minimal Elm app :
+Minimal Elm app
 ```
 type Model = Int
 type Msg = Increase | Decrease
@@ -208,11 +208,56 @@ update message model =
         Increase -> model + 1
         Decrease -> model - 1
 view model =
-    div [] [ button [ onClick Inrease ] [ text "+" ]
+    div [] [ button [ onClick Increase ] [ text "+" ]
            , text (String.fromInt model)
            , button [ onClick Decrease ] [ text "-" ] ]
 ```
+<small>Let's pick that example apart.</small>
+</script></section><section  data-markdown><script type="text/template">
+# TODO List App
 
+--- 
+
+1. Make yourself a dedicated folder
+2. Go to github.com/eXenon/elm-presentation/
+3. Run the init command in the README
+4. Open src/main.elm in your favorite editor
+</script></section><section  data-markdown><script type="text/template">
+First, the most basic skeleton
+```
+module Main exposing (main)
+
+import Browser
+
+main = Browser.sandbox {init=init, view=view, update=update}
+```
+</script></section><section  data-markdown><script type="text/template">
+Decide on the model 
+```
+type Model = ?
+
+init : Model
+init = ?
+```
+</script></section><section  data-markdown><script type="text/template">
+Decide on a few basic actions and their effect on the model
+```
+type Msg = ?
+
+update : Msg -> Model -> Model
+update = ?
+```
+</script></section><section  data-markdown><script type="text/template">
+And render a basic model
+```
+import Html exposing (..)
+
+
+view : Model -> Html
+view = ?
+```
+</script></section><section  data-markdown><script type="text/template">
+And now iterate !
 </script></section></div>
         </div>
 

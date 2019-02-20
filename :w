@@ -239,7 +239,7 @@ view model =
 
 1. Make yourself a dedicated folder
 2. Go to github.com/eXenon/elm-presentation/
-3. Run the init command in the README
+3. Run the two commands in the README
 4. Open src/main.elm in your favorite editor
 
 ---
@@ -255,35 +255,14 @@ main = Browser.sandbox {init=init, view=view, update=update}
 
 ---
 
-Decide on the model 
+ 
 ```
-type Model = ?
+type Model = Int
 
 init : Model
-init = ?
+init = 0
 ```
 
 ---
 
-Decide on a few basic actions and their effect on the model
-```
-type Msg = ?
 
-update : Msg -> Model -> Model
-update = ?
-```
-
----
-
-And render a basic model
-```
-import Html exposing (..)
-
-
-view : Model -> Html
-view = ?
-```
-
----
-
-And now iterate !
