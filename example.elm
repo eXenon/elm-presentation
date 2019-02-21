@@ -12,45 +12,73 @@ main =
 
 
 
--- Helper
+-- Helpers
 
 
-popAtIndex : List a -> Int -> List a -> ( Maybe a, List a )
-popAtIndex l i rem =
-    case ( i, l ) of
-        ( 0, h :: t ) ->
-            ( Just h, rem )
+idToInt : TodoID -> Int
+idToInt (TodoID id) =
+    id
 
-        ( _, [] ) ->
-            ( Nothing, rem )
 
-        ( _, h :: t ) ->
-            popAtIndex t (i - 1) (rem ++ [ h ])
+nextTodoID : TodoID -> TodoID
+nextTodoID (TodoID id) =
+    TodoID (id + 1)
+
+
+descToStr : TodoDescription -> String
+descToStr (TodoDescription desc) =
+    desc
 
 
 
 -- Model
 
 
+type TodoID
+    = TodoID Int
+
+
+type TodoDescription
+    = TodoDescription String
+
+
 type Todo
-    = Todo String
+    = Todo TodoID TodoDescription
 
 
 type alias Model =
-    { done : List Todo, open : List Todo, new : String }
+    { done : List Todo, open : List Todo, new : TodoDescription, next_id : TodoID }
 
 
 type Msg
-    = Closed Int
-    | Opened Int
-    | Add String
+    = Closed TodoID
+    | Opened TodoID
     | NewTodo String
     | Commit
 
 
+initID : TodoID
+initID =
+    TodoID 0
+
+
 init : Model
 init =
-    { done = [ Todo "Make todo App" ], open = [ Todo "Learn Elm" ], new = "" }
+    let
+        id1 =
+            initID
+
+        id2 =
+            nextTodoID initID
+
+        id3 =
+            nextTodoID id2
+    in
+    { done = [ Todo id1 (TodoDescription "Make todo App") ]
+    , open = [ Todo id2 (TodoDescription "Learn Elm") ]
+    , new = TodoDescription ""
+    , next_id = id3
+    }
 
 
 
@@ -60,38 +88,29 @@ init =
 update : Msg -> Model -> Model
 update msg model =
     case msg of
-        Closed idx ->
+        Closed id_ ->
             let
-                ( closed_todo, open ) =
-                    popAtIndex model.open idx []
+                ( new_done_todos, remaining_open_todos ) =
+                    List.partition (\(Todo id__ _) -> id__ == id_) model.open
             in
-                case closed_todo of
-                    Nothing ->
-                        model
+            { model | done = new_done_todos ++ model.done, open = remaining_open_todos }
 
-                    Just t ->
-                        { model | done = t :: model.done, open = open }
-
-        Opened idx ->
+        Opened id_ ->
             let
-                ( opened_todo, done ) =
-                    popAtIndex model.done idx []
+                ( new_opened_todos, remaining_done_todos ) =
+                    List.partition (\(Todo id__ _) -> id__ == id_) model.done
             in
-                case opened_todo of
-                    Nothing ->
-                        model
-
-                    Just t ->
-                        { model | done = done, open = t :: model.open }
-
-        Add description ->
-            { model | open = Todo description :: model.open }
+            { model | done = remaining_done_todos, open = new_opened_todos ++ model.open }
 
         NewTodo desc ->
-            { model | new = desc }
+            { model | new = TodoDescription desc }
 
         Commit ->
-            { model | open = Todo model.new :: model.open, new = "" }
+            { model
+                | open = Todo model.next_id model.new :: model.open
+                , next_id = nextTodoID model.next_id
+                , new = TodoDescription ""
+            }
 
 
 
@@ -103,43 +122,43 @@ checkbox desc checked_ msg =
     let
         style_ =
             if checked_ then
-                [ style "padding" "20px"
-                , style "text-decoration" "line-through"
+                [ style "text-decoration" "line-through"
                 , style "color" "#aaa"
                 ]
+
             else
-                [ style "padding" "20px" ]
+                []
     in
-        label
-            style_
-            [ input [ type_ "checkbox", checked checked_, onClick msg ] []
-            , text desc
-            ]
+    label
+        style_
+        [ input [ type_ "checkbox", checked checked_, onClick msg ] []
+        , text desc
+        ]
 
 
 view : Model -> Html Msg
 view model =
     div []
         [ div []
-            [ input [ onInput NewTodo, value model.new ] []
+            [ input [ onInput NewTodo, value (descToStr model.new) ] []
             , button [ onClick Commit ] [ text "Add new Todo" ]
             ]
         , text "TODOs"
         , div []
-            [ ul []
-                (List.indexedMap
-                    (\i (Todo d) ->
-                        li [] [ checkbox d False (Closed i) ]
+            [ ul [ style "list-style-type" "none" ]
+                (List.map
+                    (\(Todo id d) ->
+                        li [] [ checkbox (descToStr d) False (Closed id) ]
                     )
                     model.open
                 )
             ]
         , text "Closed"
         , div []
-            [ ul []
-                (List.indexedMap
-                    (\i (Todo d) ->
-                        li [] [ checkbox d True (Opened i) ]
+            [ ul [ style "list-style-type" "none" ]
+                (List.map
+                    (\(Todo id d) ->
+                        li [] [ checkbox (descToStr d) True (Opened id) ]
                     )
                     model.done
                 )
