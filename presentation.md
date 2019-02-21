@@ -89,10 +89,6 @@ Functions have (optional) type annotations.<br>
 They allow destructuring directly in the arguments.
 </small>
 ```
-square : Float -> Float
-square n =
-  n^2
-
 hypotenuse : Float -> Float -> Float
 hypotenuse a b =
   sqrt (square a + square b)
@@ -100,6 +96,9 @@ hypotenuse a b =
 distance : (Float, Float) -> (Float, Float) -> Float
 distance (a,b) (x,y) =
   hypotenuse (a - x) (b - y)
+
+-- Anonymous functions
+\a, b -> a + b
 ```
 
 ---
