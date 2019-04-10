@@ -12,10 +12,9 @@ revealOptions:
 ### What we will do today
 
 1. Elm Syntax
-2. A few concepts of FP
-3. A few concepts of strong typing
-4. The Elm Architecture
-5. Example : simple todo-list
+2. The Elm Architecture
+3. What you can do with it ?
+4. Example : simple todo-list
 
 ---
 
@@ -40,13 +39,7 @@ False : Bool
 'a'   : Char
 "abc" : String
 ```
-
 ---
-
-<small>
-If statements need a `then` and accept `else` and `else if`.<br>
-Case statements combine `if` structures and variable destructuring.
-</small>
 
 ```
 if key == 40 then
@@ -62,8 +55,6 @@ case n of
 ```
 
 ---
-
-<small>Records are a the equivalent of structs or dataclasses</small>
 
 ```
 -- create records
@@ -100,75 +91,6 @@ distance (a,b) (x,y) =
 -- Anonymous functions
 \a, b -> a + b
 ```
-
----
-
-<small>A few more</small>
-
-```
--- The |> (pipe) operator is used to chain functions
-viewNames2 names =
-  names
-    |> List.sort
-    |> String.join ", "
-
--- The let keyword allows to declare variables
-let
-  twentyFour =
-    3 * 8
-in
-twentyFour + 15
-```
-
----
-
-### Fabulous, functional, strong, assets typing
-
-
----
-
-<small>
-Elm has not the same concept of objects as Python.
-In Elm, a type has constructors (like a class) but no methods and no getters or setters.
-This gives us the following approximation :
-</small>
-
-<p class="left third">
-<small><pre><code class="hljs elm">
-type Shape = ShapeConstructor Int Int
-
-let
-    square = ShapeConstructor 2 2
-in
-    ...
-</code></pre></small>
-</p>
-
-<p class="left third">
-≈
-</p>
-
-<p class="right third">
-<small><pre><code class="hljs python">
-class Shape:
-    def __init__(self, x, y):
-        self.x, self.y = x, y
-
-square = Shape(2, 2)
-</code></pre></small>
-</p>
-
----
-
-But the compiler is really smart, so we can do things like this
-```
-type Shape = Shape Int Int
-
-square = Shape 2 2
-```
-
-*`Shape` is a constructor AND and type*
-
 ---
 
 A few things to get used to in Elm :
@@ -232,14 +154,32 @@ view model =
 
 ---
 
+# What can you do with it ?
+
+---
+
+Any webapp of course, but there are a few niceties :
+- No runtime errors. None. Nada. нет.
+- Time travelling debugger with explorable state
+- Native, really easy websockets
+- Amazing packages like elm-ui to separate layout from style
+- Worst case scenario : controlled, typed, interop with JS
+
+---
+
+Other plus points :
+- Vibrant community (elm-europe is held every year in Villejuif)
+- Actively developed (0.19 came out in 09/2018)
+
+---
+
+Problems :
+- Actively developed (0.19 broke a few things)
+- Not as rich an ecosystem as JS, esp. on UI side
+
+---
+
 # TODO List App
-
---- 
-
-1. Make yourself a dedicated folder
-2. Go to `github.com/eXenon/elm-presentation/`
-3. Run the init command in the README
-4. Open `src/main.elm` in your favorite editor
 
 ---
 
@@ -251,6 +191,8 @@ import Browser
 
 main = Browser.sandbox {init=init, view=view, update=update}
 ```
+
+<small>To follow along, the easiest is using <a>https://ellie-app.com</a></small>
 
 ---
 
